@@ -16,4 +16,5 @@ public interface PostService extends IService<Post> {
     void updateLikeCount(Long postId);
     void updateCommentCount(Long postId);
     void setBestAnswer(Long postId, Long commentId);
+    java.util.List<Post> getHotPosts(int limit);
 }

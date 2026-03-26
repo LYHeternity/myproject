@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import request from '@/utils/request'
 import { favoriteAPI } from '@/api/community'
 
 export default {
@@ -100,9 +101,9 @@ export default {
         page: this.pagination.currentPage,
         size: this.pagination.pageSize
       }).then(res => {
-        if (res.data && res.data.records) {
-          this.posts = res.data.records || []
-          this.pagination.total = res.data.total || 0
+        if (res) {
+          this.posts = res || []
+          this.pagination.total = res.length || 0
         } else {
           this.posts = []
           this.pagination.total = 0

@@ -60,16 +60,30 @@ public class UserController {
     }
 
     @GetMapping("/favorites/projects")
-    public Result<?> myFavoriteProjects() {
+    public Result<?> myFavoriteProjects(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         Long uid = SecurityUtil.getCurrentUserId();
         if (uid == null) return Result.fail(401, "未登录");
-        return Result.ok(userFavoriteService.myFavoriteProjects(uid));
+        return Result.ok(userFavoriteService.myFavoriteProjects(uid, page, size));
     }
 
     @GetMapping("/favorites/resources")
-    public Result<?> myFavoriteResources() {
+    public Result<?> myFavoriteResources(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         Long uid = SecurityUtil.getCurrentUserId();
         if (uid == null) return Result.fail(401, "未登录");
-        return Result.ok(userFavoriteService.myFavoriteResources(uid));
+        return Result.ok(userFavoriteService.myFavoriteResources(uid, page, size));
+    }
+
+    @GetMapping("/favorites/articles")
+    public Result<?> myFavoriteArticles(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+        Long uid = SecurityUtil.getCurrentUserId();
+        if (uid == null) return Result.fail(401, "未登录");
+        return Result.ok(userFavoriteService.myFavoriteArticles(uid, page, size));
+    }
+
+    @GetMapping("/favorites/posts")
+    public Result<?> myFavoritePosts(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+        Long uid = SecurityUtil.getCurrentUserId();
+        if (uid == null) return Result.fail(401, "未登录");
+        return Result.ok(userFavoriteService.myFavoritePosts(uid, page, size));
     }
 }

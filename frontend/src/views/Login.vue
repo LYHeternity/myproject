@@ -34,6 +34,20 @@
             class="login-input"
           />
         </el-form-item>
+        <el-form-item prop="captcha">
+          <div class="input-label">Captcha</div>
+          <div class="captcha-container">
+            <el-input 
+              v-model="form.captcha" 
+              placeholder="请输入验证码" 
+              class="login-input captcha-input"
+              @keyup.enter.native="submit"
+            />
+            <div class="captcha-image">
+              <img :src="captchaUrl" @click="refreshCaptcha" alt="验证码" class="captcha-img" />
+            </div>
+          </div>
+        </el-form-item>
         <div class="form-options">
           <el-checkbox v-model="form.remember" class="remember-checkbox">
             记住我
@@ -61,24 +75,48 @@
 
 <script>
 import { mapActions } from 'vuex'
+import request from '@/utils/request'
 export default {
   name: 'Login',
   data() {
     return {
       loading: false,
+      captchaUrl: '',
       form: { 
         account: '', 
         password: '',
+        captcha: '',
         remember: false
       },
       rules: {
         account: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        captcha: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
       }
+    }
+  },
+  mounted() {
+    this.refreshCaptcha()
+    // 从localStorage加载记住的账号
+    const savedAccount = localStorage.getItem('rememberedAccount')
+    if (savedAccount) {
+      this.form.account = savedAccount
+      this.form.remember = true
     }
   },
   methods: {
     ...mapActions('user', ['login']),
+    async refreshCaptcha() {
+      try {
+        const res = await request({ url: '/auth/captcha', method: 'get' })
+        console.log('验证码响应:', res)
+        this.captchaUrl = res
+      } catch (error) {
+        console.error('获取验证码失败:', error)
+        // 失败时设置默认验证码图片
+        this.captchaUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='
+      }
+    },
     submit() {
       this.$refs.form.validate(async valid => {
         if (!valid) return
@@ -86,6 +124,14 @@ export default {
         try {
           await this.login(this.form)
           this.$message.success('登录成功')
+          
+          // 处理记住我功能
+          if (this.form.remember) {
+            localStorage.setItem('rememberedAccount', this.form.account)
+          } else {
+            localStorage.removeItem('rememberedAccount')
+          }
+          
           // 根据用户角色决定跳转目标
           const userRole = this.$store.state.user.role
           if (userRole === 'admin') {
@@ -95,6 +141,8 @@ export default {
           }
         } catch (e) {
           this.$message.error(e.message || '登录失败')
+          // 登录失败时刷新验证码
+          this.refreshCaptcha()
         } finally {
           this.loading = false
         }
@@ -265,6 +313,28 @@ export default {
   border: 1px solid #666666 !important;
   background: #555555 !important;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.captcha-container {
+  display: flex;
+  gap: 12px;
+}
+
+.captcha-input {
+  flex: 1;
+}
+
+.captcha-image {
+  display: flex;
+  align-items: center;
+}
+
+.captcha-img {
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #666666;
 }
 
 .form-options {

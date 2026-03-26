@@ -260,7 +260,7 @@
 </template>
 
 <script>
-import { postAPI, commentAPI, likeAPI } from '@/api/community'
+import { postAPI, commentAPI, likeAPI, favoriteAPI } from '@/api/community'
 import { messageAPI } from '@/api/message'
 
 export default {
@@ -392,8 +392,11 @@ export default {
     },
     checkFavorite() {
       if (this.post && this.currentUserId) {
-        // 这里可以调用收藏API，暂时模拟
-        this.isFavorited = false
+        favoriteAPI.checkFavorite(this.post.id).then(res => {
+          if (res.data) {
+            this.isFavorited = res.data
+          }
+        })
       }
     },
     toggleFavorite() {
@@ -401,9 +404,12 @@ export default {
         this.$message.error('请先登录')
         return
       }
-      // 这里可以调用收藏API，暂时模拟
-      this.isFavorited = !this.isFavorited
-      this.$message.success(this.isFavorited ? '收藏成功' : '取消收藏')
+      favoriteAPI.toggleFavorite(this.post.id).then(res => {
+        if (res.code === 200) {
+          this.isFavorited = res.data
+          this.$message.success(this.isFavorited ? '收藏成功' : '取消收藏')
+        }
+      })
     },
     sharePost() {
       // 实现分享功能

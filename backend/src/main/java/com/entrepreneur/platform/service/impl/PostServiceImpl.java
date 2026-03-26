@@ -8,12 +8,17 @@ import com.entrepreneur.platform.mapper.PostMapper;
 import com.entrepreneur.platform.service.PostService;
 import com.entrepreneur.platform.common.PageResult;
 import org.springframework.stereotype.Service;
+import com.entrepreneur.platform.service.RedisService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 帖子服务实现
  */
 @Service
 public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements PostService {
+
+    @Autowired
+    private RedisService redisService;
 
     @Override
     public PageResult<Post> getPostList(int page, int size, String category, String type, String keyword) {
@@ -71,5 +76,34 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
             post.setBestAnswerId(commentId);
             baseMapper.updateById(post);
         }
+    }
+
+    @Override
+    public java.util.List<Post> getHotPosts(int limit) {
+        // 生成缓存键
+        String cacheKey = "posts:hot:" + limit;
+        
+        // 尝试从Redis缓存中获取数据
+        java.util.List<Post> cachedResult = (java.util.List<Post>) redisService.get(cacheKey);
+        if (cachedResult != null) {
+            return cachedResult;
+        }
+        
+        // 缓存不存在，从数据库查询
+        QueryWrapper<Post> wrapper = new QueryWrapper<>();
+        wrapper.eq("status", 1)
+               .orderByDesc("like_count")
+               .orderByDesc("view_count")
+               .orderByDesc("comment_count")
+               .last("LIMIT " + limit);
+        
+        java.util.List<Post> result = baseMapper.selectList(wrapper);
+        
+        // 将结果存入Redis缓存，设置过期时间为15分钟
+        if (result != null) {
+            redisService.set(cacheKey, result, 900);
+        }
+        
+        return result;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
@@ -53,6 +54,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 配置静态资源目录的访问，特别是头像图片
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("file:" + path + "/static/");
+        // 配置根路径访问静态资源
+        registry.addResourceHandler("/")
+                .addResourceLocations("classpath:/static/");
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        // 将根路径重定向到index.html
+        registry.addViewController("/").setViewName("forward:/index.html");
     }
 
     @Override
@@ -60,7 +70,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 设置字符串响应的编码为UTF-8
         StringHttpMessageConverter stringConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
         converters.add(0, stringConverter);
-        
+
         // 配置Jackson消息转换器，确保JSON响应使用UTF-8编码
         for (HttpMessageConverter<?> converter : converters) {
             if (converter instanceof MappingJackson2HttpMessageConverter) {

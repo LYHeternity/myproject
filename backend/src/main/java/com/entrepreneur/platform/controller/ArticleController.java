@@ -5,7 +5,7 @@ import com.entrepreneur.platform.common.Result;
 import com.entrepreneur.platform.entity.Article;
 import com.entrepreneur.platform.mapper.ArticleMapper;
 import com.entrepreneur.platform.service.ArticleService;
-import com.entrepreneur.platform.service.ArticleFavoriteService;
+import com.entrepreneur.platform.service.UserFavoriteService;
 import com.entrepreneur.platform.util.ContentProcessorUtil;
 import com.entrepreneur.platform.util.MarkdownFormatterUtil;
 import com.entrepreneur.platform.util.SecurityUtil;
@@ -25,7 +25,7 @@ public class ArticleController {
     private ArticleService articleService;
     
     @Autowired
-    private ArticleFavoriteService articleFavoriteService;
+    private UserFavoriteService userFavoriteService;
     
     @Autowired
     private ArticleMapper baseMapper;
@@ -180,7 +180,8 @@ public class ArticleController {
     @PostMapping("/{id}/favorite")
     public Result<Boolean> toggleFavorite(@PathVariable Long id) {
         Long userId = SecurityUtil.getCurrentUserId();
-        boolean isFavorited = articleFavoriteService.toggleFavorite(userId, id);
+        userFavoriteService.toggleFavorite(userId, "article", id);
+        boolean isFavorited = userFavoriteService.isFavorited(userId, "article", id);
         return Result.ok(isFavorited);
     }
     
@@ -192,7 +193,7 @@ public class ArticleController {
     @GetMapping("/{id}/favorite")
     public Result<Boolean> isFavorited(@PathVariable Long id) {
         Long userId = SecurityUtil.getCurrentUserId();
-        boolean isFavorited = articleFavoriteService.isFavorited(userId, id);
+        boolean isFavorited = userFavoriteService.isFavorited(userId, "article", id);
         return Result.ok(isFavorited);
     }
 }

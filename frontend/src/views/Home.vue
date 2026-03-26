@@ -339,6 +339,18 @@ export default {
   methods: {
     ...mapActions('message', ['fetchUnreadCount']),
     async loadOverview() {
+      // 使用缓存减少重复请求
+      if (localStorage.getItem('overviewData')) {
+        try {
+          const cached = JSON.parse(localStorage.getItem('overviewData'))
+          this.overview = cached
+          this.$nextTick(() => this.startNumberAnimation())
+          return
+        } catch (e) {
+          localStorage.removeItem('overviewData')
+        }
+      }
+      
       try {
         const res = await request({ url: '/stats/overview', method: 'get', skipGlobalError: true })
         if (res && typeof res === 'object') {
@@ -346,6 +358,9 @@ export default {
           this.overview.projectCount = res.projectCount || 0
           this.overview.resourceCount = res.resourceCount || 0
           this.overview.orderCount = res.orderCount || 0
+          // 缓存数据，有效期5分钟
+          localStorage.setItem('overviewData', JSON.stringify(this.overview))
+          setTimeout(() => localStorage.removeItem('overviewData'), 5 * 60 * 1000)
         }
       } catch (_) {
         this.overview = { userCount: 128, projectCount: 56, resourceCount: 34, orderCount: 89 }
@@ -438,9 +453,12 @@ export default {
       this.resetCarouselInterval()
     },
     startCarousel() {
-      this.carouselInterval = setInterval(() => {
-        this.nextSlide()
-      }, 5000)
+      // 只在浏览器环境中启动轮播，避免在SSR中执行
+      if (typeof window !== 'undefined') {
+        this.carouselInterval = setInterval(() => {
+          this.nextSlide()
+        }, 5000)
+      }
     },
     stopCarousel() {
       if (this.carouselInterval) {

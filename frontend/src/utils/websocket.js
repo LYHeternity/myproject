@@ -12,34 +12,35 @@ class WebSocketService {
 
     // 尝试连接 WebSocket 服务
     try {
-      this.stompClient = new Client({
-        webSocketFactory: () => new SockJS('/api/ws'),
-        onConnect: () => {
-          console.log('WebSocket connected')
-          this.connected = true
+      // 只在生产环境中连接WebSocket，开发环境可跳过
+      if (process.env.NODE_ENV === 'production') {
+        this.stompClient = new Client({
+          webSocketFactory: () => new SockJS('/api/ws'),
+          onConnect: () => {
+            this.connected = true
 
-          // 订阅新文章通知
-          this.stompClient.subscribe('/topic/articles/new', (message) => {
-            const articleCount = parseInt(message.body)
-            this.handleNewArticles(articleCount)
-          })
+            // 订阅新文章通知
+            this.stompClient.subscribe('/topic/articles/new', (message) => {
+              const articleCount = parseInt(message.body)
+              this.handleNewArticles(articleCount)
+            })
 
-          // 订阅文章更新通知
-          this.stompClient.subscribe('/topic/articles/update', (message) => {
-            const updateMessage = message.body
-            this.handleArticleUpdate(updateMessage)
-          })
-        },
-        onStompError: (error) => {
-          console.error('WebSocket connection error:', error)
-          this.connected = false
-        },
-        reconnectDelay: 5000
-      })
+            // 订阅文章更新通知
+            this.stompClient.subscribe('/topic/articles/update', (message) => {
+              const updateMessage = message.body
+              this.handleArticleUpdate(updateMessage)
+            })
+          },
+          onStompError: (error) => {
+            this.connected = false
+          },
+          reconnectDelay: 10000 // 增加重连延迟，减少频繁重连
+        })
 
-      this.stompClient.activate()
+        this.stompClient.activate()
+      }
     } catch (error) {
-      console.error('Failed to create WebSocket client:', error)
+      // 静默处理WebSocket错误，避免影响页面加载
     }
   }
 

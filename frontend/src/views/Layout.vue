@@ -340,8 +340,8 @@ export default {
           this.$router.push('/profile')
         }
       } else if (cmd === 'favorites') {
-        if (this.$route.path !== '/community/favorites') {
-          this.$router.push('/community/favorites')
+        if (this.$route.path !== '/favorites') {
+          this.$router.push('/favorites')
         }
       } else if (cmd === 'logout') {
         this.logout()

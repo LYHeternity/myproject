@@ -7,6 +7,7 @@ import com.entrepreneur.platform.dto.RegisterRequest;
 import com.entrepreneur.platform.entity.User;
 import com.entrepreneur.platform.service.LogService;
 import com.entrepreneur.platform.service.UserService;
+import com.entrepreneur.platform.util.CaptchaUtil;
 import com.entrepreneur.platform.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,11 +35,29 @@ public class AuthController {
     private final LogService logService;
 
     /**
-     * 登录：账号（用户名/手机/邮箱）+ 密码，返回 JWT 与用户信息
+     * 生成验证码
+     */
+    @GetMapping("/captcha")
+    public Result<?> captcha(HttpSession session) {
+        CaptchaUtil.Captcha captcha = CaptchaUtil.generateCaptcha();
+        // 将验证码存储到session中，有效期5分钟
+        session.setAttribute("captcha", captcha.getCode());
+        session.setMaxInactiveInterval(300);
+        return Result.ok("data:image/png;base64," + captcha.getImageBase64());
+    }
+
+    /**
+     * 登录：账号（用户名/手机/邮箱）+ 密码 + 验证码，返回 JWT 与用户信息
      */
     @PostMapping("/login")
-    public Result<LoginResponse> login(@Validated @RequestBody LoginRequest request, HttpServletRequest req) {
+    public Result<LoginResponse> login(@Validated @RequestBody LoginRequest request, HttpServletRequest req, HttpSession session) {
         try {
+            // 验证验证码
+            String sessionCaptcha = (String) session.getAttribute("captcha");
+            if (sessionCaptcha == null || !sessionCaptcha.equalsIgnoreCase(request.getCaptcha())) {
+                return Result.fail(401, "验证码错误");
+            }
+            
             User user = userService.findUserByAccount(request.getAccount());
             if (user == null) {
                 return Result.fail(401, "账号或密码错误");

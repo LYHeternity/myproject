@@ -433,8 +433,11 @@ export default {
     this.$store.watch(
       state => state.user,
       (newUser) => {
-        // 当用户信息更新时，重新加载用户列表
-        this.load()
+        // 当用户信息更新且用户仍然登录时，重新加载用户列表
+        const token = this.$store.state.user.token || localStorage.getItem('token')
+        if (token) {
+          this.load()
+        }
       },
       { deep: true }
     )

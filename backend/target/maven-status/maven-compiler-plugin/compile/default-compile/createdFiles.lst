@@ -33,6 +33,7 @@ com\entrepreneur\platform\service\UserFavoriteService.class
 com\entrepreneur\platform\config\MybatisPlusConfig$1.class
 com\entrepreneur\platform\service\ArticleService.class
 com\entrepreneur\platform\service\MessageService.class
+com\entrepreneur\platform\util\RedisUtil.class
 com\entrepreneur\platform\entity\Resource.class
 com\entrepreneur\platform\util\MarkdownFormatterTest.class
 com\entrepreneur\platform\entity\ProjectTeamMember.class
@@ -63,6 +64,7 @@ com\entrepreneur\platform\mapper\PermissionMapper.class
 com\entrepreneur\platform\controller\ResourceController.class
 com\entrepreneur\platform\util\DatabaseSchemaUpdater.class
 com\entrepreneur\platform\config\WebSocketConfig.class
+com\entrepreneur\platform\util\CaptchaUtil$Captcha.class
 com\entrepreneur\platform\config\RedisConfig.class
 com\entrepreneur\platform\controller\admin\AdminServiceController.class
 com\entrepreneur\platform\entity\Notification.class
@@ -97,6 +99,7 @@ com\entrepreneur\platform\controller\admin\AdminUserController.class
 com\entrepreneur\platform\mapper\RolePermissionMapper.class
 com\entrepreneur\platform\service\impl\FollowServiceImpl.class
 com\entrepreneur\platform\controller\admin\AdminAuditController.class
+com\entrepreneur\platform\util\CaptchaUtil.class
 com\entrepreneur\platform\service\ProjectService.class
 com\entrepreneur\platform\mapper\ProjectProgressMapper.class
 com\entrepreneur\platform\entity\UserRole.class

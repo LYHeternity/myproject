@@ -49,8 +49,8 @@ const mutations = {
 }
 
 const actions = {
-  async login({ commit }, { account, password }) {
-    const data = await loginApi({ account, password })
+  async login({ commit }, { account, password, captcha, remember }) {
+    const data = await loginApi({ account, password, captcha, remember })
     commit('SET_TOKEN', data.token)
     commit('SET_USER', {
       userId: data.userId,

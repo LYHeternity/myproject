@@ -53,9 +53,9 @@ export const followAPI = {
 // 收藏相关API
 export const favoriteAPI = {
   // 检查是否已收藏
-  checkFavorite: (postId) => request.get('/community/favorites/check', { params: { postId } }),
+  checkFavorite: (postId) => request.get(`/community/posts/${postId}/favorite`),
   // 切换收藏状态
-  toggleFavorite: (postId) => request.post('/community/favorites/toggle', { postId }),
+  toggleFavorite: (postId) => request.post(`/community/posts/${postId}/favorite`),
   // 获取用户收藏的帖子列表
-  getFavoritePosts: (params) => request.get('/community/favorites/posts', { params })
+  getFavoritePosts: (params) => request.get('/user/favorites/posts', { params })
 }

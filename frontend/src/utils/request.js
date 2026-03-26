@@ -23,7 +23,6 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   res => {
-    console.log('Response received:', res)
     if (res.config.responseType === 'blob') {
       return res.data
     }
@@ -33,7 +32,6 @@ request.interceptors.response.use(
     }
     const { code, message, data } = body
     if (code === 200) {
-      console.log('Response data:', data)
       return data !== undefined ? data : body
     }
     Message.error(message || '请求失败')

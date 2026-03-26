@@ -76,6 +76,7 @@ C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\pla
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\config\WebMvcConfig.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\entity\UserPermission.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\service\ArticleFavoriteService.java
+C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\util\RedisUtil.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\dto\LoginResponse.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\controller\admin\AdminServiceController.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\util\SecurityUtil.java
@@ -101,6 +102,7 @@ C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\pla
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\mapper\PermissionMapper.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\config\FileUploadConfig.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\controller\admin\AdminUserController.java
+C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\util\CaptchaUtil.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\config\RedisConfig.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\controller\admin\AdminProjectController.java
 C:\Users\Administrator\Desktop\lunwen\backend\src\main\java\com\entrepreneur\platform\mapper\CommentMapper.java

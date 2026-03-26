@@ -8,6 +8,7 @@ import com.entrepreneur.platform.mapper.ResourceMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import com.entrepreneur.platform.service.RedisService;
 
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -20,6 +21,8 @@ import java.util.Collections;
 public class ResourceService {
 
     private final ResourceMapper resourceMapper;
+    // 声明Redis服务，用于缓存热门服务
+    private final RedisService redisService;
 
     public Resource publish(Resource resource) {
         resource.setStatus("pending");
@@ -138,5 +141,37 @@ public class ResourceService {
          .last("LIMIT " + limit);
 
         return resourceMapper.selectList(q);
+    }
+
+    /**
+     * 获取热门服务列表
+     * @param limit 数量限制
+     * @return 热门服务列表
+     */
+    public java.util.List<Resource> getHotResources(int limit) {
+        // 生成缓存键
+        String cacheKey = "resources:hot:" + limit;
+        
+        // 尝试从Redis缓存中获取数据
+        java.util.List<Resource> cachedResult = (java.util.List<Resource>) redisService.get(cacheKey);
+        if (cachedResult != null) {
+            return cachedResult;
+        }
+        
+        // 缓存不存在，从数据库查询
+        LambdaQueryWrapper<Resource> q = new LambdaQueryWrapper<Resource>()
+                .eq(Resource::getStatus, "online")
+                .orderByDesc(Resource::getRating)
+                .orderByDesc(Resource::getViewCount)
+                .last("LIMIT " + limit);
+        
+        java.util.List<Resource> result = resourceMapper.selectList(q);
+        
+        // 将结果存入Redis缓存，设置过期时间为15分钟
+        if (result != null) {
+            redisService.set(cacheKey, result, 900);
+        }
+        
+        return result;
     }
 }

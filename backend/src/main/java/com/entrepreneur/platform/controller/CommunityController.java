@@ -3,6 +3,7 @@ package com.entrepreneur.platform.controller;
 import com.entrepreneur.platform.common.Result;
 import com.entrepreneur.platform.entity.Post;
 import com.entrepreneur.platform.service.PostService;
+import com.entrepreneur.platform.service.UserFavoriteService;
 import com.entrepreneur.platform.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class CommunityController {
 
     @Autowired
     private PostService postService;
+    
+    @Autowired
+    private UserFavoriteService userFavoriteService;
 
     /**
      * 获取帖子列表
@@ -108,5 +112,42 @@ public class CommunityController {
         }
         postService.setBestAnswer(id, commentId);
         return Result.ok("设置成功");
+    }
+    
+    /**
+     * 切换帖子收藏状态
+     * @param id 帖子ID
+     * @return 收藏状态
+     */
+    @PostMapping("/posts/{id}/favorite")
+    public Result<Boolean> toggleFavorite(@PathVariable Long id) {
+        Long userId = SecurityUtil.getCurrentUserId();
+        if (userId == null) return Result.fail(401, "未登录");
+        userFavoriteService.toggleFavorite(userId, "post", id);
+        boolean isFavorited = userFavoriteService.isFavorited(userId, "post", id);
+        return Result.ok(isFavorited);
+    }
+    
+    /**
+     * 检查帖子是否被收藏
+     * @param id 帖子ID
+     * @return 收藏状态
+     */
+    @GetMapping("/posts/{id}/favorite")
+    public Result<Boolean> isFavorited(@PathVariable Long id) {
+        Long userId = SecurityUtil.getCurrentUserId();
+        if (userId == null) return Result.fail(401, "未登录");
+        boolean isFavorited = userFavoriteService.isFavorited(userId, "post", id);
+        return Result.ok(isFavorited);
+    }
+
+    /**
+     * 获取热门帖子列表
+     * @param limit 数量限制
+     * @return 热门帖子列表
+     */
+    @GetMapping("/posts/hot")
+    public Result<java.util.List<Post>> getHotPosts(@RequestParam(defaultValue = "5") int limit) {
+        return Result.ok(postService.getHotPosts(limit));
     }
 }

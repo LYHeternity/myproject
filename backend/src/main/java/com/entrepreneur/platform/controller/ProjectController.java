@@ -142,4 +142,14 @@ public class ProjectController {
         projectService.removeTeamMember(memberId);
         return Result.ok();
     }
+
+    /**
+     * 获取热门项目列表
+     * @param limit 数量限制
+     * @return 热门项目列表
+     */
+    @GetMapping("/hot")
+    public Result<List<Project>> getHotProjects(@RequestParam(defaultValue = "5") int limit) {
+        return Result.ok(projectService.getHotProjects(limit));
+    }
 }

@@ -400,6 +400,39 @@ export default {
 .search-input {
   width: 600px;
   max-width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input .el-input__inner {
+  height: 48px;
+  font-size: 16px;
+  border-radius: 25px 0 0 25px;
+  border-right: none;
+}
+
+.search-input .el-button {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0 25px 25px 0;
+  background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%);
+  border: none;
+  color: white;
+  padding: 0 30px;
+  transition: all 0.3s ease;
+}
+
+.search-input .el-button:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #69c0ff 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+.search-input .el-input__prefix {
+  color: #999;
+  font-size: 18px;
 }
 
 /* 特色文章样式 */
