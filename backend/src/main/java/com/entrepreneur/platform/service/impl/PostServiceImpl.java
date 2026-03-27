@@ -21,7 +21,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     private RedisService redisService;
 
     @Override
-    public PageResult<Post> getPostList(int page, int size, String category, String type, String keyword) {
+    public PageResult<Post> getPostList(int page, int size, String category, String type, String status, String keyword) {
         Page<Post> postPage = new Page<>(page, size);
         QueryWrapper<Post> wrapper = new QueryWrapper<>();
         
@@ -33,11 +33,18 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
             wrapper.eq("type", type);
         }
         
+        if (status != null && !status.isEmpty()) {
+            wrapper.eq("status", status);
+        } else {
+            // 默认只查询正常状态的帖子
+            wrapper.eq("status", 1);
+        }
+        
         if (keyword != null && !keyword.isEmpty()) {
             wrapper.like("title", keyword).or().like("content", keyword);
         }
         
-        wrapper.eq("status", 1).orderByDesc("created_at");
+        wrapper.orderByDesc("created_at");
         
         Page<Post> result = baseMapper.selectPage(postPage, wrapper);
         return new PageResult<>(result.getRecords(), result.getTotal());

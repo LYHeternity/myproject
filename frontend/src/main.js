@@ -10,7 +10,7 @@ import webSocketService from './utils/websocket'
 // 配置Element UI默认样式
 Vue.use(ElementUI, {
   size: 'medium',
-  zIndex: 3000
+  zIndex: 9999
 })
 
 Vue.config.productionTip = false

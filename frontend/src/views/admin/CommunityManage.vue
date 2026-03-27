@@ -9,6 +9,9 @@
         <el-button type="primary" icon="el-icon-refresh" @click="loadPosts" class="primary-action-button">
           刷新数据
         </el-button>
+        <el-button type="info" @click="testDialog">
+          测试对话框
+        </el-button>
       </div>
     </div>
 
@@ -162,10 +165,12 @@
 
     <!-- 编辑帖子对话框 -->
     <el-dialog
-      v-model="dialogVisible"
+      :visible.sync="dialogVisible"
       title="编辑帖子"
       width="80%"
       :close-on-click-modal="false"
+      :z-index="9999"
+      :modal="false"
     >
       <el-form ref="postForm" :model="postForm" :rules="rules" label-width="100px">
         <el-form-item label="标题" prop="title">
@@ -206,19 +211,21 @@
 
     <!-- 查看帖子对话框 -->
     <el-dialog
-      v-model="viewDialogVisible"
+      :visible.sync="viewDialogVisible"
       title="查看帖子"
       width="80%"
       :close-on-click-modal="false"
+      :z-index="9999"
+      :modal="false"
     >
       <div v-loading="loadingDetail">
-        <h3 style="margin-bottom: 16px; color: #f8fafc;">{{ postForm.title }}</h3>
-        <div style="margin-bottom: 16px; color: #94a3b8;">
+        <h3 style="margin-bottom: 16px;">{{ postForm.title }}</h3>
+        <div style="margin-bottom: 16px;">
           <span style="margin-right: 16px;">类型：{{ postForm.type === 'article' ? '文章' : '问题' }}</span>
           <span style="margin-right: 16px;">分类：{{ postForm.category }}</span>
           <span>状态：{{ postForm.status === 1 ? '正常' : '禁用' }}</span>
         </div>
-        <div style="color: #f8fafc; line-height: 1.6; white-space: pre-wrap;">{{ postForm.content }}</div>
+        <div style="line-height: 1.6; white-space: pre-wrap;">{{ postForm.content }}</div>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="viewDialogVisible = false">关闭</el-button>
@@ -337,63 +344,85 @@ export default {
     },
     editPost(id) {
       console.log('编辑帖子:', id)
-      this.dialogVisible = true
       this.currentPostId = id
+      this.dialogVisible = true
+      this.viewDialogVisible = false
       this.loadPostDetail(id)
     },
     viewPost(id) {
       console.log('查看帖子:', id)
-      this.viewDialogVisible = true
       this.currentPostId = id
+      this.viewDialogVisible = true
+      this.dialogVisible = false
       this.loadPostDetail(id)
     },
     loadPostDetail(id) {
+      console.log('开始加载帖子详情:', id)
       this.loadingDetail = true
+      console.log('调用postAPI.getPostDetail')
       postAPI.getPostDetail(id).then(res => {
-        if (res.code === 200 && res.data) {
+        console.log('获取帖子详情响应:', res)
+        // 修复响应处理，确保正确检查code和data
+        if (res && (res.code === 200 || res.code === '200') && res.data) {
+          console.log('设置postForm:', res.data)
           this.postForm = { ...res.data }
         } else {
+          console.error('加载帖子详情失败，响应:', res)
           this.$message.error('加载帖子详情失败')
         }
       }).catch(err => {
         console.error('加载帖子详情失败:', err)
         this.$message.error('加载帖子详情失败')
       }).finally(() => {
+        console.log('加载帖子详情完成')
         this.loadingDetail = false
       })
     },
     savePost() {
+      console.log('开始保存帖子:', this.currentPostId, this.postForm)
       this.$refs.postForm.validate(valid => {
         if (valid) {
+          console.log('表单验证通过，开始调用API')
           this.saving = true
           postAPI.updatePost(this.currentPostId, this.postForm).then(res => {
+            console.log('更新帖子响应:', res)
             if (res.code === 200) {
+              console.log('更新成功')
               this.$message.success('更新成功')
               this.dialogVisible = false
               this.loadPosts()
             } else {
+              console.error('更新失败，响应:', res)
               this.$message.error(res.message || '更新失败')
             }
           }).catch(err => {
             console.error('更新帖子失败:', err)
             this.$message.error('更新失败，请稍后重试')
           }).finally(() => {
+            console.log('更新帖子完成')
             this.saving = false
           })
+        } else {
+          console.error('表单验证失败')
         }
       })
     },
     deletePost(id) {
+      console.log('开始删除帖子:', id)
       this.$confirm('确定要删除这篇帖子吗？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        console.log('用户确认删除，调用API')
         postAPI.deletePost(id).then(res => {
+          console.log('删除帖子响应:', res)
           if (res.code === 200) {
+            console.log('删除成功')
             this.$message.success('删除成功')
             this.loadPosts()
           } else {
+            console.error('删除失败，响应:', res)
             this.$message.error(res.message || '删除失败')
           }
         }).catch(err => {
@@ -401,16 +430,22 @@ export default {
           this.$message.error('删除失败，请稍后重试')
         })
       }).catch(() => {
+        console.log('用户取消删除')
         // 取消删除
       })
     },
     toggleStatus(post) {
+      console.log('开始切换状态:', post.id, post.status)
       const newStatus = post.status === 1 ? 0 : 1
+      console.log('新状态:', newStatus)
       postAPI.updatePost(post.id, { status: newStatus }).then(res => {
+        console.log('更新状态响应:', res)
         if (res.code === 200) {
+          console.log('状态更新成功')
           post.status = newStatus
           this.$message.success('状态更新成功')
         } else {
+          console.error('状态更新失败，响应:', res)
           this.$message.error(res.message || '状态更新失败')
         }
       }).catch(err => {
@@ -431,6 +466,10 @@ export default {
         0: 'tag-status-inactive'
       }
       return classMap[status] || 'tag-default'
+    },
+    testDialog() {
+      console.log('测试对话框')
+      this.dialogVisible = true
     }
   }
 }
@@ -695,54 +734,70 @@ export default {
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  z-index: 10;
+  z-index: 9999;
   min-height: 90px;
+  pointer-events: auto !important;
 }
 
 /* 确保按钮可点击 */
 .project-actions .el-button {
   position: relative;
-  z-index: 20;
+  z-index: 9999;
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: auto !important;
   width: 100%;
   justify-content: center;
   font-size: 12px;
   padding: 6px 12px;
   margin: 0;
   border-radius: 6px;
+  background: #1e293b;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #f8fafc;
+  transition: all 0.3s ease;
 }
 
 /* 修复按钮悬停效果 */
 .project-actions .el-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  background: #3b82f6;
+  border-color: #3b82f6;
 }
 
 /* 确保表格单元格内容不被遮挡 */
 .el-table__cell {
   overflow: visible !important;
-  z-index: 5;
-  pointer-events: auto !important;
-}
-
-/* 确保按钮点击事件不被阻止 */
-.project-actions {
-  pointer-events: auto !important;
   z-index: 100 !important;
+  pointer-events: auto !important;
+  position: relative;
 }
 
 /* 确保表格行和单元格不会阻止点击事件 */
 .el-table__row {
   pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
 }
 
 .el-table__body {
   pointer-events: auto !important;
+  position: relative;
+  z-index: 5;
 }
 
 /* 确保按钮区域的所有元素都能接收点击事件 */
 .project-actions * {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 9999;
+}
+
+/* 确保导出按钮可点击 */
+.section-actions .el-button {
+  position: relative;
+  z-index: 9999;
   pointer-events: auto !important;
   cursor: pointer !important;
 }
@@ -895,6 +950,102 @@ export default {
   color: #64748b;
   border-color: rgba(100, 116, 139, 0.3);
 }
+
+/* 对话框样式 */
+.admin-page .el-dialog {
+  z-index: 9999 !important;
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.admin-page .el-dialog__wrapper {
+  z-index: 9999 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* 确保没有其他元素影响蒙版 */
+.admin-page .el-dialog__wrapper::before {
+  display: none !important;
+}
+
+.admin-page .el-dialog__wrapper::after {
+  display: none !important;
+}
+
+.admin-page .el-dialog__body {
+  color: #f8fafc !important;
+  background: #1e293b !important;
+}
+
+.admin-page .el-dialog__header {
+  background: #334155 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.admin-page .el-dialog__title {
+  color: #f8fafc !important;
+  font-weight: 600 !important;
+}
+
+.admin-page .el-dialog__footer {
+  background: #334155 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.admin-page .el-dialog__close {
+  color: #94a3b8 !important;
+}
+
+/* 确保表单元素在对话框中可见 */
+.admin-page .el-dialog .el-input__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.admin-page .el-dialog .el-textarea__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.admin-page .el-dialog .el-select .el-input__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.admin-page .el-dialog .el-select-dropdown {
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.admin-page .el-dialog .el-select-dropdown__item {
+  color: #f8fafc !important;
+}
+
+.admin-page .el-dialog .el-select-dropdown__item:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+.admin-page .el-dialog .el-select-dropdown__item.selected {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #3b82f6 !important;
+}
+
+.admin-page .el-dialog .el-switch__core {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.admin-page .el-dialog .el-switch.is-active .el-switch__core {
+  background-color: #3b82f6 !important;
+}
+
+
 
 /* 响应式设计 */
 @media (max-width: 1200px) {

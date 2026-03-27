@@ -1,265 +1,177 @@
-2026-03-26 16:24:49.843  INFO 31608 --- [main] c.e.p.EntrepreneurPlatformApplication    : Starting EntrepreneurPlatformApplication using Java 18 on WIN-FB1L1F5MSGJ with PID 31608 (C:\Users\Administrator\Desktop\lunwen\backend\target\classes started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
-2026-03-26 16:24:49.853 DEBUG 31608 --- [main] c.e.p.EntrepreneurPlatformApplication    : Running with Spring Boot v2.7.0, Spring v5.3.20
-2026-03-26 16:24:49.854  INFO 31608 --- [main] c.e.p.EntrepreneurPlatformApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-26 16:24:50.404  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2026-03-26 16:24:50.406  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-03-26 16:24:50.427  INFO 31608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-2026-03-26 16:24:50.999  INFO 31608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2026-03-26 16:24:51.007  INFO 31608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-26 16:24:51.007  INFO 31608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2026-03-26 16:24:51.089  INFO 31608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-03-26 16:24:51.089  INFO 31608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1190 ms
-2026-03-26 16:24:51.134 DEBUG 31608 --- [main] c.e.p.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
-2026-03-26 16:24:51.844  INFO 31608 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-26 16:24:51.940  INFO 31608 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-26 16:24:52.497  INFO 31608 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6785df10, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@144440f5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e5ebdfe, org.springframework.security.web.header.HeaderWriterFilter@664f49f, org.springframework.security.web.authentication.logout.LogoutFilter@3c8fe8ad, com.entrepreneur.platform.security.JwtAuthenticationFilter@7066363, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ff26c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a06602f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e2c8ef, org.springframework.security.web.session.SessionManagementFilter@148b6f95, org.springframework.security.web.access.ExceptionTranslationFilter@7497a554, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@71beada8]
-2026-03-26 16:24:52.652  INFO 31608 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2026-03-26 16:24:52.900  INFO 31608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
-2026-03-26 16:24:52.902  INFO 31608 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-03-26 16:24:52.902  INFO 31608 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4203529f]]
-2026-03-26 16:24:52.903  INFO 31608 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-03-26 16:24:52.911  INFO 31608 --- [main] c.e.p.EntrepreneurPlatformApplication    : Started EntrepreneurPlatformApplication in 3.432 seconds (JVM running for 3.741)
-2026-03-26 16:24:52.944  WARN 31608 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @1a1d6a08
-2026-03-26 16:24:52.994  INFO 31608 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
-2026-03-26 16:24:52.996  INFO 31608 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
-2026-03-26 16:24:53.007  INFO 31608 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 16:24:55.313  INFO 31608 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-26 16:24:55.313  INFO 31608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-26 16:24:55.315  INFO 31608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-03-26 16:25:52.564  INFO 31608 --- [MessageBroker-9] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 24, active threads = 0, queued tasks = 0, completed tasks = 33], outboundChannel[pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 5], sockJsScheduler[pool size = 12, active threads = 1, queued tasks = 4, completed tasks = 13]
-2026-03-26 16:25:52.924  INFO 31608 --- [MessageBroker-11] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
-2026-03-26 16:25:52.925  INFO 31608 --- [MessageBroker-11] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 16:27:34.308 ERROR 31608 --- [http-nio-8080-exec-4] c.e.p.common.GlobalExceptionHandler      : 系统异常
+2026-03-27 14:55:43.590  INFO 17356 --- [main] c.e.p.service.UserRolePermissionTest     : Starting UserRolePermissionTest using Java 18 on WIN-FB1L1F5MSGJ with PID 17356 (started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 14:55:43.594 DEBUG 17356 --- [main] c.e.p.service.UserRolePermissionTest     : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 14:55:43.594  INFO 17356 --- [main] c.e.p.service.UserRolePermissionTest     : The following 1 profile is active: "test"
+2026-03-27 14:55:44.502  INFO 17356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 14:55:44.507  INFO 17356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 14:55:44.547  INFO 17356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2026-03-27 14:55:46.766  INFO 17356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 14:55:46.982  INFO 17356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 14:55:48.288  INFO 17356 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@65d6640, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@672d8370, org.springframework.security.web.context.SecurityContextPersistenceFilter@11f9b95a, org.springframework.security.web.header.HeaderWriterFilter@50bb1c1f, org.springframework.security.web.authentication.logout.LogoutFilter@2bc2e022, com.entrepreneur.platform.security.JwtAuthenticationFilter@6451a288, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@299786b1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38923cfe, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13137835, org.springframework.security.web.session.SessionManagementFilter@29b5e7db, org.springframework.security.web.access.ExceptionTranslationFilter@3c910acd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@51df2a41]
+2026-03-27 14:55:48.889  INFO 17356 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 14:55:49.385  INFO 17356 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-27 14:55:49.385  INFO 17356 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6b43b101]]
+2026-03-27 14:55:49.387  INFO 17356 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-27 14:55:49.410  INFO 17356 --- [main] c.e.p.service.UserRolePermissionTest     : Started UserRolePermissionTest in 6.134 seconds (JVM running for 7.305)
+2026-03-27 14:55:49.469  WARN 17356 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @704a52ec
+2026-03-27 14:55:49.553  INFO 17356 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
+2026-03-27 14:55:49.554  INFO 17356 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
+2026-03-27 14:55:49.570  INFO 17356 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 14:56:48.428  INFO 17356 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
+2026-03-27 14:56:49.411  INFO 17356 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
+2026-03-27 14:56:49.413  INFO 17356 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 14:59:25.960  INFO 17356 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
+2026-03-27 14:59:26.489  INFO 17356 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
+2026-03-27 14:59:27.076  INFO 17356 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-27 14:59:27.076  INFO 17356 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6b43b101]]
+2026-03-27 14:59:27.077  INFO 17356 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-27 14:59:27.204  INFO 17356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-27 14:59:27.212  INFO 17356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-27 14:59:47.562  INFO 4024 --- [main] c.e.p.EntrepreneurPlatformApplication    : Starting EntrepreneurPlatformApplication v1.0.0 using Java 18 on WIN-FB1L1F5MSGJ with PID 4024 (C:\Users\Administrator\Desktop\lunwen\backend\target\platform-1.0.0.jar started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 14:59:47.565 DEBUG 4024 --- [main] c.e.p.EntrepreneurPlatformApplication    : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 14:59:47.566  INFO 4024 --- [main] c.e.p.EntrepreneurPlatformApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-27 14:59:48.379  INFO 4024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 14:59:48.382  INFO 4024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 14:59:48.410  INFO 4024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2026-03-27 14:59:49.249  INFO 4024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-27 14:59:49.262  INFO 4024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-27 14:59:49.262  INFO 4024 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2026-03-27 14:59:49.329  INFO 4024 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-27 14:59:49.330  INFO 4024 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1709 ms
+2026-03-27 14:59:49.400 DEBUG 4024 --- [main] c.e.p.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-03-27 14:59:50.630  INFO 4024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 14:59:50.786  INFO 4024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 14:59:51.826  INFO 4024 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ac45389, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e5d4f6b, org.springframework.security.web.context.SecurityContextPersistenceFilter@162b3d47, org.springframework.security.web.header.HeaderWriterFilter@3874b815, org.springframework.security.web.authentication.logout.LogoutFilter@3a5c2626, com.entrepreneur.platform.security.JwtAuthenticationFilter@7829b776, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3402b4c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@363a3d15, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39c1fe0b, org.springframework.security.web.session.SessionManagementFilter@6940f685, org.springframework.security.web.access.ExceptionTranslationFilter@36b310aa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4fad6218]
+2026-03-27 14:59:52.132  INFO 4024 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 14:59:52.424  WARN 4024 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2026-03-27 14:59:52.448  INFO 4024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-27 14:59:52.457  INFO 4024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-27 14:59:52.462  INFO 4024 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-03-27 14:59:52.476  INFO 4024 --- [main] ConditionEvaluationReportLoggingListener : 
 
-org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like 
- WHERE  deleted=0
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-03-27 14:59:52.506 ERROR 4024 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
-AND (user_id = 1 AND target_id = 20 AND target_type = '' at line 1
-### The error may exist in com/entrepreneur/platform/mapper/LikeMapper.java (best guess)
-### The error may involve defaultParameterMap
-### The error occurred while setting parameters
-### SQL: SELECT COUNT( * ) AS total FROM like   WHERE  deleted=0  AND (user_id = ? AND target_id = ? AND target_type = ? AND deleted = ?)
-### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like 
- WHERE  deleted=0
+***************************
+APPLICATION FAILED TO START
+***************************
 
-AND (user_id = 1 AND target_id = 20 AND target_type = '' at line 1
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like 
- WHERE  deleted=0
+Description:
 
-AND (user_id = 1 AND target_id = 20 AND target_type = '' at line 1
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239) ~[spring-jdbc-5.3.20.jar:5.3.20]
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70) ~[spring-jdbc-5.3.20.jar:5.3.20]
-	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at jdk.proxy2/jdk.proxy2.$Proxy78.selectOne(Unknown Source) ~[na:na]
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:89) ~[mybatis-plus-core-3.5.3.jar:3.5.3]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148) ~[mybatis-plus-core-3.5.3.jar:3.5.3]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.3.jar:3.5.3]
-	at jdk.proxy2/jdk.proxy2.$Proxy110.selectCount(Unknown Source) ~[na:na]
-	at com.entrepreneur.platform.service.impl.LikeServiceImpl.isLiked(LikeServiceImpl.java:23) ~[classes/:na]
-	at com.entrepreneur.platform.service.impl.LikeServiceImpl$$FastClassBySpringCGLIB$$c0dab09c.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.20.jar:5.3.20]
-	at org.springframework.aop.framework.CglibAopProxy.invokeMethod(CglibAopProxy.java:386) ~[spring-aop-5.3.20.jar:5.3.20]
-	at org.springframework.aop.framework.CglibAopProxy.access$000(CglibAopProxy.java:85) ~[spring-aop-5.3.20.jar:5.3.20]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:704) ~[spring-aop-5.3.20.jar:5.3.20]
-	at com.entrepreneur.platform.service.impl.LikeServiceImpl$$EnhancerBySpringCGLIB$$d0a1dcc8.isLiked(<generated>) ~[classes/:na]
-	at com.entrepreneur.platform.controller.LikeController.checkLike(LikeController.java:35) ~[classes/:na]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at com.entrepreneur.platform.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:42) ~[classes/:na]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.7.1.jar:5.7.1]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
-	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
-Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like 
- WHERE  deleted=0
+Web server failed to start. Port 8080 was already in use.
 
-AND (user_id = 1 AND target_id = 20 AND target_type = '' at line 1
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.28.jar:8.0.28]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.28.jar:8.0.28]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371) ~[mysql-connector-java-8.0.28.jar:8.0.28]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-4.0.3.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-4.0.3.jar:na]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577) ~[na:na]
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59) ~[mybatis-3.5.10.jar:3.5.10]
-	at jdk.proxy3/jdk.proxy3.$Proxy128.execute(Unknown Source) ~[na:na]
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76) ~[mybatis-3.5.10.jar:3.5.10]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577) ~[na:na]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
-	... 106 common frames omitted
+Action:
 
-2026-03-26 16:27:43.414  INFO 31608 --- [http-nio-8080-exec-3] c.e.p.service.impl.ArticleServiceImpl    : 文章详情存入Redis缓存: article:detail:101
-2026-03-26 16:28:34.557  INFO 31608 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
-2026-03-26 16:28:34.567  INFO 31608 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
-2026-03-26 16:29:27.346  INFO 31608 --- [MessageBroker-11] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
-2026-03-26 16:29:27.349  INFO 31608 --- [MessageBroker-11] c.e.platform.config.ScheduledTasks       : 启动时爬取完成，共保存 0 篇新文章
-2026-03-26 16:30:29.300  INFO 31608 --- [http-nio-8080-exec-7] c.e.p.service.impl.ArticleServiceImpl    : 文章列表存入Redis缓存: articles:category:all:page:1:size:10:sort:latest
-2026-03-26 16:38:42.314  INFO 31608 --- [http-nio-8080-exec-1] c.e.p.service.impl.ArticleServiceImpl    : 文章详情存入Redis缓存: article:detail:100
-2026-03-26 16:38:42.694  INFO 31608 --- [http-nio-8080-exec-2] c.e.p.service.impl.ArticleServiceImpl    : 热门文章存入Redis缓存: articles:hot:6
-2026-03-26 16:49:55.261  INFO 31608 --- [http-nio-8080-exec-4] c.e.p.service.impl.ArticleServiceImpl    : 文章详情存入Redis缓存: article:detail:100
-2026-03-26 17:32:25.007  INFO 25464 --- [main] c.e.p.EntrepreneurPlatformApplication    : Starting EntrepreneurPlatformApplication using Java 18 on WIN-FB1L1F5MSGJ with PID 25464 (C:\Users\Administrator\Desktop\lunwen\backend\target\classes started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
-2026-03-26 17:32:25.008 DEBUG 25464 --- [main] c.e.p.EntrepreneurPlatformApplication    : Running with Spring Boot v2.7.0, Spring v5.3.20
-2026-03-26 17:32:25.010  INFO 25464 --- [main] c.e.p.EntrepreneurPlatformApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-26 17:32:25.510  INFO 25464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2026-03-26 17:32:25.512  INFO 25464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-03-26 17:32:25.535  INFO 25464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2026-03-26 17:32:26.112  INFO 25464 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2026-03-26 17:32:26.122  INFO 25464 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-26 17:32:26.123  INFO 25464 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2026-03-26 17:32:26.209  INFO 25464 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-03-26 17:32:26.211  INFO 25464 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1166 ms
-2026-03-26 17:32:26.252 DEBUG 25464 --- [main] c.e.p.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
-2026-03-26 17:32:26.912  INFO 25464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-26 17:32:27.012  INFO 25464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-26 17:32:27.666  INFO 25464 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@507f47f9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6785df10, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ee581db, org.springframework.security.web.header.HeaderWriterFilter@78bd02c8, org.springframework.security.web.authentication.logout.LogoutFilter@616f81b5, com.entrepreneur.platform.security.JwtAuthenticationFilter@67eec8e1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e5ebdfe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2047adea, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@144440f5, org.springframework.security.web.session.SessionManagementFilter@2c15034f, org.springframework.security.web.access.ExceptionTranslationFilter@65015a49, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43778371]
-2026-03-26 17:32:27.809  INFO 25464 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2026-03-26 17:32:28.028  INFO 25464 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
-2026-03-26 17:32:28.030  INFO 25464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-03-26 17:32:28.030  INFO 25464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@780a91d0]]
-2026-03-26 17:32:28.031  INFO 25464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-03-26 17:32:28.039  INFO 25464 --- [main] c.e.p.EntrepreneurPlatformApplication    : Started EntrepreneurPlatformApplication in 3.329 seconds (JVM running for 3.604)
-2026-03-26 17:32:28.068  WARN 25464 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @1a1d6a08
-2026-03-26 17:32:28.121  INFO 25464 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
-2026-03-26 17:32:28.122  INFO 25464 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
-2026-03-26 17:32:28.133  INFO 25464 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 17:33:27.725  INFO 25464 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
-2026-03-26 17:33:28.051  INFO 25464 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
-2026-03-26 17:33:28.051  INFO 25464 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 17:33:59.821  INFO 25464 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-26 17:33:59.821  INFO 25464 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-26 17:33:59.823  INFO 25464 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-03-26 17:36:05.794  INFO 25464 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
-2026-03-26 17:36:06.288  INFO 25464 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
-2026-03-26 17:37:07.867  INFO 25464 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
-2026-03-26 17:37:07.870  INFO 25464 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 启动时爬取完成，共保存 0 篇新文章
-2026-03-26 17:39:42.786  INFO 25464 --- [http-nio-8080-exec-3] c.e.p.service.impl.ArticleServiceImpl    : 文章列表存入Redis缓存: articles:category:all:page:1:size:10:sort:latest
-2026-03-26 17:43:36.417  WARN 25464 --- [http-nio-8080-exec-9] c.e.p.common.GlobalExceptionHandler      : 无权限: 不允许访问
-2026-03-26 17:44:06.594  WARN 25464 --- [http-nio-8080-exec-9] c.e.p.common.GlobalExceptionHandler      : 无权限: 不允许访问
-2026-03-26 17:56:11.821  INFO 3120 --- [main] c.e.p.service.UserRolePermissionTest     : Starting UserRolePermissionTest using Java 18 on WIN-FB1L1F5MSGJ with PID 3120 (started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
-2026-03-26 17:56:11.823 DEBUG 3120 --- [main] c.e.p.service.UserRolePermissionTest     : Running with Spring Boot v2.7.0, Spring v5.3.20
-2026-03-26 17:56:11.824  INFO 3120 --- [main] c.e.p.service.UserRolePermissionTest     : The following 1 profile is active: "test"
-2026-03-26 17:56:12.815  INFO 3120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2026-03-26 17:56:12.818  INFO 3120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-03-26 17:56:12.857  INFO 3120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-2026-03-26 17:56:15.331  INFO 3120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-26 17:56:15.732  INFO 3120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-26 17:56:17.432  INFO 3120 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46d69ca4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c9b5e62, org.springframework.security.web.context.SecurityContextPersistenceFilter@4e26987b, org.springframework.security.web.header.HeaderWriterFilter@1b6cad77, org.springframework.security.web.authentication.logout.LogoutFilter@67784537, com.entrepreneur.platform.security.JwtAuthenticationFilter@481ed95c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7981963f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14993306, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c826498, org.springframework.security.web.session.SessionManagementFilter@3c910acd, org.springframework.security.web.access.ExceptionTranslationFilter@2773504f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@670c171c]
-2026-03-26 17:56:18.660  INFO 3120 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2026-03-26 17:56:19.140  INFO 3120 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-03-26 17:56:19.141  INFO 3120 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@107ebdad]]
-2026-03-26 17:56:19.142  INFO 3120 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-03-26 17:56:19.180  INFO 3120 --- [main] c.e.p.service.UserRolePermissionTest     : Started UserRolePermissionTest in 7.738 seconds (JVM running for 8.631)
-2026-03-26 17:56:19.334  WARN 3120 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @4493d195
-2026-03-26 17:56:19.466  INFO 3120 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
-2026-03-26 17:56:19.467  INFO 3120 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
-2026-03-26 17:56:19.528  INFO 3120 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 17:57:17.698  INFO 3120 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
-2026-03-26 17:57:19.191  INFO 3120 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
-2026-03-26 17:57:19.191  INFO 3120 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
-2026-03-26 17:59:55.838  INFO 3120 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
-2026-03-26 17:59:56.328  INFO 3120 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
-2026-03-26 17:59:56.884  INFO 3120 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-03-26 17:59:56.886  INFO 3120 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@107ebdad]]
-2026-03-26 17:59:56.886  INFO 3120 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-03-26 17:59:57.028  INFO 3120 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-26 17:59:57.034  INFO 3120 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-03-27 15:00:38.055  INFO 30748 --- [main] c.e.p.EntrepreneurPlatformApplication    : Starting EntrepreneurPlatformApplication v1.0.0 using Java 18 on WIN-FB1L1F5MSGJ with PID 30748 (C:\Users\Administrator\Desktop\lunwen\backend\target\platform-1.0.0.jar started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 15:00:38.057 DEBUG 30748 --- [main] c.e.p.EntrepreneurPlatformApplication    : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 15:00:38.058  INFO 30748 --- [main] c.e.p.EntrepreneurPlatformApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-27 15:00:38.863  INFO 30748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 15:00:38.875  INFO 30748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 15:00:38.902  INFO 30748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-27 15:00:39.796  INFO 30748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-27 15:00:39.807  INFO 30748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-27 15:00:39.809  INFO 30748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2026-03-27 15:00:39.866  INFO 30748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-27 15:00:39.866  INFO 30748 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1752 ms
+2026-03-27 15:00:39.927 DEBUG 30748 --- [main] c.e.p.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-03-27 15:00:41.127  INFO 30748 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 15:00:41.281  INFO 30748 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 15:00:42.158  INFO 30748 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36ddaebf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@213c3543, org.springframework.security.web.context.SecurityContextPersistenceFilter@5acc9fdf, org.springframework.security.web.header.HeaderWriterFilter@173f73e7, org.springframework.security.web.authentication.logout.LogoutFilter@5533dc72, com.entrepreneur.platform.security.JwtAuthenticationFilter@72445aba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e48bf9a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a891add, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9d7ccfe, org.springframework.security.web.session.SessionManagementFilter@7ee3d262, org.springframework.security.web.access.ExceptionTranslationFilter@46d567cb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@732c9b5c]
+2026-03-27 15:00:42.411  INFO 30748 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 15:00:42.774  INFO 30748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-27 15:00:42.775  INFO 30748 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-27 15:00:42.777  INFO 30748 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6920614]]
+2026-03-27 15:00:42.777  INFO 30748 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-27 15:00:42.791  INFO 30748 --- [main] c.e.p.EntrepreneurPlatformApplication    : Started EntrepreneurPlatformApplication in 5.201 seconds (JVM running for 5.7)
+2026-03-27 15:00:42.986  WARN 30748 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @3d24753a
+2026-03-27 15:00:43.106  INFO 30748 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
+2026-03-27 15:00:43.107  INFO 30748 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
+2026-03-27 15:00:43.127  INFO 30748 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:01:42.246  INFO 30748 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
+2026-03-27 15:01:42.789  INFO 30748 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
+2026-03-27 15:01:42.791  INFO 30748 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:01:58.827  INFO 30748 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-27 15:01:58.828  INFO 30748 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-27 15:01:58.830  INFO 30748 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-03-27 15:04:32.605  INFO 30748 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
+2026-03-27 15:04:33.141  INFO 30748 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
+2026-03-27 15:05:32.230  INFO 30748 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
+2026-03-27 15:05:32.235  INFO 30748 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 启动时爬取完成，共保存 0 篇新文章
+2026-03-27 15:17:51.420  INFO 30308 --- [main] c.e.p.service.UserRolePermissionTest     : Starting UserRolePermissionTest using Java 18 on WIN-FB1L1F5MSGJ with PID 30308 (started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 15:17:51.421 DEBUG 30308 --- [main] c.e.p.service.UserRolePermissionTest     : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 15:17:51.423  INFO 30308 --- [main] c.e.p.service.UserRolePermissionTest     : The following 1 profile is active: "test"
+2026-03-27 15:17:52.547  INFO 30308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 15:17:52.550  INFO 30308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 15:17:52.590  INFO 30308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2026-03-27 15:17:55.404  INFO 30308 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 15:17:55.661  INFO 30308 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 15:17:57.664  INFO 30308 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@61d42275, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6614289a, org.springframework.security.web.context.SecurityContextPersistenceFilter@4780341, org.springframework.security.web.header.HeaderWriterFilter@2773504f, org.springframework.security.web.authentication.logout.LogoutFilter@29c80149, com.entrepreneur.platform.security.JwtAuthenticationFilter@27261190, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9f2fe2e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@39342614, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4148ce43, org.springframework.security.web.session.SessionManagementFilter@1868ed54, org.springframework.security.web.access.ExceptionTranslationFilter@40a7974, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a878778]
+2026-03-27 15:17:58.448  INFO 30308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 15:17:59.096  INFO 30308 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-27 15:17:59.096  INFO 30308 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@e3275d3]]
+2026-03-27 15:17:59.097  INFO 30308 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-27 15:17:59.120  INFO 30308 --- [main] c.e.p.service.UserRolePermissionTest     : Started UserRolePermissionTest in 8.2 seconds (JVM running for 8.967)
+2026-03-27 15:17:59.175  WARN 30308 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @4493d195
+2026-03-27 15:17:59.269  INFO 30308 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
+2026-03-27 15:17:59.270  INFO 30308 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
+2026-03-27 15:17:59.293  INFO 30308 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:24:58.359  INFO 30352 --- [main] c.e.p.service.UserRolePermissionTest     : Starting UserRolePermissionTest using Java 18 on WIN-FB1L1F5MSGJ with PID 30352 (started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 15:24:58.361 DEBUG 30352 --- [main] c.e.p.service.UserRolePermissionTest     : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 15:24:58.362  INFO 30352 --- [main] c.e.p.service.UserRolePermissionTest     : The following 1 profile is active: "test"
+2026-03-27 15:24:59.291  INFO 30352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 15:24:59.294  INFO 30352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 15:24:59.340  INFO 30352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+2026-03-27 15:25:01.655  INFO 30352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 15:25:01.927  INFO 30352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 15:25:03.997  INFO 30352 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@78861d9e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a878778, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f9a8ddc, org.springframework.security.web.header.HeaderWriterFilter@3dea1ecc, org.springframework.security.web.authentication.logout.LogoutFilter@299786b1, com.entrepreneur.platform.security.JwtAuthenticationFilter@46c662f2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1868ed54, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4780341, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1eabfad5, org.springframework.security.web.session.SessionManagementFilter@5366575d, org.springframework.security.web.access.ExceptionTranslationFilter@76f9e000, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@409395b9]
+2026-03-27 15:25:04.618  INFO 30352 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 15:25:05.076  INFO 30352 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-27 15:25:05.076  INFO 30352 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4088702d]]
+2026-03-27 15:25:05.077  INFO 30352 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-27 15:25:05.089  INFO 30352 --- [main] c.e.p.service.UserRolePermissionTest     : Started UserRolePermissionTest in 7.097 seconds (JVM running for 8.048)
+2026-03-27 15:25:05.158  WARN 30352 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @4493d195
+2026-03-27 15:25:05.244  INFO 30352 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
+2026-03-27 15:25:05.245  INFO 30352 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
+2026-03-27 15:25:05.260  INFO 30352 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:26:04.148  INFO 30352 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
+2026-03-27 15:26:05.098  INFO 30352 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
+2026-03-27 15:26:05.099  INFO 30352 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:28:37.612  INFO 30352 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 软盟资讯爬取完成，共保存 0 篇新文章
+2026-03-27 15:28:38.064  INFO 30352 --- [main] c.e.platform.init.DataInitializer        : 自动爬取完成，共获取 0 篇文章
+2026-03-27 15:28:38.590  INFO 30352 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-27 15:28:38.592  INFO 30352 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4088702d]]
+2026-03-27 15:28:38.592  INFO 30352 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-27 15:28:38.730  INFO 30352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-27 15:28:38.737  INFO 30352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-27 15:49:32.168  INFO 25412 --- [main] c.e.p.EntrepreneurPlatformApplication    : Starting EntrepreneurPlatformApplication using Java 18 on WIN-FB1L1F5MSGJ with PID 25412 (C:\Users\Administrator\Desktop\lunwen\backend\target\classes started by Administrator in C:\Users\Administrator\Desktop\lunwen\backend)
+2026-03-27 15:49:32.176 DEBUG 25412 --- [main] c.e.p.EntrepreneurPlatformApplication    : Running with Spring Boot v2.7.0, Spring v5.3.20
+2026-03-27 15:49:32.177  INFO 25412 --- [main] c.e.p.EntrepreneurPlatformApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-27 15:49:32.782  INFO 25412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-03-27 15:49:32.783  INFO 25412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-27 15:49:32.809  INFO 25412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2026-03-27 15:49:33.535  INFO 25412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-27 15:49:33.547  INFO 25412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-27 15:49:33.549  INFO 25412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2026-03-27 15:49:33.644  INFO 25412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-27 15:49:33.645  INFO 25412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1425 ms
+2026-03-27 15:49:33.694 DEBUG 25412 --- [main] c.e.p.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-03-27 15:49:34.513  INFO 25412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-27 15:49:34.644  INFO 25412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-27 15:49:35.340  INFO 25412 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@126254ec, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@275902e1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a661215, org.springframework.security.web.header.HeaderWriterFilter@1a06602f, org.springframework.security.web.authentication.logout.LogoutFilter@2cc61b3b, com.entrepreneur.platform.security.JwtAuthenticationFilter@32f5ecc4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@212e39ee, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@131d977f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c788d08, org.springframework.security.web.session.SessionManagementFilter@5c60c08, org.springframework.security.web.access.ExceptionTranslationFilter@2047adea, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@34a33343]
+2026-03-27 15:49:35.523  INFO 25412 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-27 15:49:35.788  INFO 25412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-27 15:49:35.791  INFO 25412 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-27 15:49:35.792  INFO 25412 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3fc5d397]]
+2026-03-27 15:49:35.792  INFO 25412 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-27 15:49:35.801  INFO 25412 --- [main] c.e.p.EntrepreneurPlatformApplication    : Started EntrepreneurPlatformApplication in 3.988 seconds (JVM running for 4.321)
+2026-03-27 15:49:35.839  WARN 25412 --- [main] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @1a1d6a08
+2026-03-27 15:49:35.903  INFO 25412 --- [main] c.e.platform.init.DataInitializer        : 默认管理员密码已更新: admin / Admin@1234
+2026-03-27 15:49:35.905  INFO 25412 --- [main] c.e.platform.init.DataInitializer        : 开始自动爬取创业资讯文章...
+2026-03-27 15:49:35.919  INFO 25412 --- [main] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:50:35.409  INFO 25412 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 2, completed tasks = 0]
+2026-03-27 15:50:35.804  INFO 25412 --- [MessageBroker-2] c.e.platform.config.ScheduledTasks       : 应用启动，开始爬取创头条文章...
+2026-03-27 15:50:35.805  INFO 25412 --- [MessageBroker-2] c.e.p.service.impl.ArticleServiceImpl    : 开始从软盟资讯爬取文章...
+2026-03-27 15:50:49.413  INFO 25412 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-27 15:50:49.413  INFO 25412 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-27 15:50:49.415  INFO 25412 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

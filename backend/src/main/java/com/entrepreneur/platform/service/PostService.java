@@ -10,7 +10,7 @@ import java.util.Map;
  * 帖子服务
  */
 public interface PostService extends IService<Post> {
-    PageResult<Post> getPostList(int page, int size, String category, String type, String keyword);
+    PageResult<Post> getPostList(int page, int size, String category, String type, String status, String keyword);
     Post getPostById(Long id);
     void incrementViewCount(Long postId);
     void updateLikeCount(Long postId);
