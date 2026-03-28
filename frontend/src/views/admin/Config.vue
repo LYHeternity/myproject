@@ -99,8 +99,18 @@ export default {
   },
   methods: {
     // 保存基础配置
-    saveBasicConfig() {
-      this.$message.success('基础配置已保存')
+    async saveBasicConfig() {
+      try {
+        await adminConfig.set('siteName', this.basic.siteName)
+        await adminConfig.set('logo', this.basic.logo)
+        await adminConfig.set('copyright', this.basic.copyright)
+        await adminConfig.set('contact', this.basic.contact)
+        this.$message.success('基础配置已保存')
+        this.loadConfigList()
+      } catch (error) {
+        console.error('Save basic config error:', error)
+        this.$message.error('保存失败，请稍后重试')
+      }
     },
     // 重置基础配置
     resetBasicConfig() {
@@ -108,8 +118,18 @@ export default {
       this.$message.info('基础配置已重置')
     },
     // 保存业务配置
-    saveBusinessConfig() {
-      this.$message.success('业务配置已保存')
+    async saveBusinessConfig() {
+      try {
+        await adminConfig.set('projectAuditDays', this.business.projectAuditDays)
+        await adminConfig.set('resourceAuditDays', this.business.resourceAuditDays)
+        await adminConfig.set('investmentValidDays', this.business.investmentValidDays)
+        await adminConfig.set('bookingValidDays', this.business.bookingValidDays)
+        this.$message.success('业务配置已保存')
+        this.loadConfigList()
+      } catch (error) {
+        console.error('Save business config error:', error)
+        this.$message.error('保存失败，请稍后重试')
+      }
     },
     // 重置业务配置
     resetBusinessConfig() {
@@ -117,13 +137,31 @@ export default {
       this.$message.info('业务配置已重置')
     },
     // 保存安全配置
-    saveSecurityConfig() {
-      this.$message.success('安全配置已保存')
+    async saveSecurityConfig() {
+      try {
+        await adminConfig.set('passwordStrength', this.security.passwordStrength)
+        await adminConfig.set('jwtExpireHours', this.security.jwtExpireHours)
+        this.$message.success('安全配置已保存')
+        this.loadConfigList()
+      } catch (error) {
+        console.error('Save security config error:', error)
+        this.$message.error('保存失败，请稍后重试')
+      }
     },
     // 重置安全配置
     resetSecurityConfig() {
       this.security = { passwordStrength: 8, jwtExpireHours: 2 }
       this.$message.info('安全配置已重置')
+    },
+    // 加载配置列表
+    loadConfigList() {
+      this.loading = true
+      adminConfig.list().then(res => {
+        this.list = res || []
+        this.loading = false
+      }).catch(() => {
+        this.loading = false
+      })
     }
   }
 }

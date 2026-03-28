@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page dark-theme">
     <div class="page-header-section">
       <div class="page-header-content">
         <h1 class="page-title">社区管理</h1>
@@ -336,6 +336,41 @@ export default {
       try {
         const postIds = this.selectedPosts.map(post => post.id)
         console.log('导出帖子ID:', postIds)
+        
+        // 准备导出数据
+        const exportData = this.selectedPosts.map(post => {
+          return {
+            id: post.id,
+            title: post.title,
+            type: post.type === 'article' ? '文章' : '问题',
+            category: post.category,
+            userId: post.userId,
+            viewCount: post.viewCount,
+            likeCount: post.likeCount,
+            commentCount: post.commentCount,
+            status: post.status === 1 ? '正常' : '禁用',
+            createdAt: post.createdAt
+          }
+        })
+        
+        // 转换为CSV格式
+        const headers = ['ID', '标题', '类型', '分类', '作者ID', '浏览量', '点赞数', '评论数', '状态', '创建时间']
+        const csvContent = [
+          headers.join(','),
+          ...exportData.map(row => Object.values(row).join(','))
+        ].join('\n')
+        
+        // 创建下载链接
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.setAttribute('href', url)
+        link.setAttribute('download', `帖子导出_${new Date().getTime()}.csv`)
+        link.style.visibility = 'hidden'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        
         this.$message.success('导出成功')
       } catch (error) {
         console.error('Export error:', error)
@@ -386,7 +421,7 @@ export default {
           this.saving = true
           postAPI.updatePost(this.currentPostId, this.postForm).then(res => {
             console.log('更新帖子响应:', res)
-            if (res.code === 200) {
+            if (res && (res.code === 200 || res.code === '200')) {
               console.log('更新成功')
               this.$message.success('更新成功')
               this.dialogVisible = false
@@ -417,7 +452,7 @@ export default {
         console.log('用户确认删除，调用API')
         postAPI.deletePost(id).then(res => {
           console.log('删除帖子响应:', res)
-          if (res.code === 200) {
+          if (res && (res.code === 200 || res.code === '200')) {
             console.log('删除成功')
             this.$message.success('删除成功')
             this.loadPosts()
@@ -440,7 +475,7 @@ export default {
       console.log('新状态:', newStatus)
       postAPI.updatePost(post.id, { status: newStatus }).then(res => {
         console.log('更新状态响应:', res)
-        if (res.code === 200) {
+        if (res && (res.code === 200 || res.code === '200')) {
           console.log('状态更新成功')
           post.status = newStatus
           this.$message.success('状态更新成功')
@@ -1022,6 +1057,16 @@ export default {
 .admin-page .el-dialog .el-select-dropdown {
   background: #1e293b !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  z-index: 10000 !important;
+}
+
+/* 确保其他下拉组件层级高于弹窗 */
+.admin-page .el-date-picker {
+  z-index: 10000 !important;
+}
+
+.admin-page .el-dropdown-menu {
+  z-index: 10000 !important;
 }
 
 .admin-page .el-dialog .el-select-dropdown__item {

@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page dark-theme">
     <div class="page-header-section">
       <div class="page-header-content">
         <h1 class="page-title">用户管理</h1>
@@ -252,6 +252,8 @@
       :visible.sync="showAddUserDialog" 
       width="600px"
       class="custom-dialog"
+      :modal="false"
+      :z-index="1000"
     >
       <el-form :model="newUserForm" :rules="userFormRules" ref="newUserFormRef" label-width="100px">
         <el-form-item label="用户名" prop="username">
@@ -292,6 +294,8 @@
       :visible.sync="showEditUserDialog" 
       width="600px"
       class="custom-dialog"
+      :modal="false"
+      :z-index="1001"
     >
       <el-form :model="editUserForm" :rules="userFormRules" ref="editUserFormRef" label-width="100px">
         <el-form-item label="用户名" prop="username">
@@ -329,6 +333,8 @@
       :visible.sync="showAssignRolesDialog" 
       width="500px"
       class="custom-dialog"
+      :modal="false"
+      :z-index="1002"
     >
       <el-form :model="assignRolesForm" label-width="100px">
         <el-form-item label="用户">
@@ -1164,6 +1170,21 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
+}
+
+.dark-theme :deep(.el-popper) {
+  z-index: 9999 !important;
+}
+
+/* 直接针对下拉框容器的样式 */
+.el-popper {
+  z-index: 9999 !important;
+}
+
+/* 确保下拉框的 z-index 高于弹窗 */
+.el-select-dropdown {
+  z-index: 9999 !important;
 }
 
 .dark-theme .el-select-dropdown__item {
@@ -1199,6 +1220,7 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
 }
 
 .dark-theme .el-date-picker__header {
@@ -1864,6 +1886,7 @@ export default {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .custom-dialog .el-dialog__header {

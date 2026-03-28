@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page dark-theme">
     <div class="page-header-section">
       <div class="page-header-content">
         <h1 class="page-title">项目管理</h1>
@@ -157,6 +157,7 @@
       :visible.sync="showDetailDialog" 
       width="800px"
       class="custom-dialog"
+      :modal="false"
     >
       <div class="project-detail">
         <el-descriptions :column="1" border class="detail-descriptions">
@@ -275,6 +276,38 @@ export default {
     },
     async doExport() {
       try {
+        // 准备导出数据
+        const exportData = this.projectList.map(project => {
+          return {
+            id: project.id,
+            title: project.title,
+            industry: project.industry,
+            status: this.getStatusLabel(project.status),
+            description: project.description,
+            createTime: this.formatTime(project.createTime),
+            submitter: project.submitter || '未知',
+            auditMessage: project.auditMessage || ''
+          }
+        })
+        
+        // 转换为CSV格式
+        const headers = ['ID', '项目名称', '行业', '状态', '项目描述', '提交时间', '提交人', '审核意见']
+        const csvContent = [
+          headers.join(','),
+          ...exportData.map(row => Object.values(row).join(','))
+        ].join('\n')
+        
+        // 创建下载链接
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.setAttribute('href', url)
+        link.setAttribute('download', `项目导出_${new Date().getTime()}.csv`)
+        link.style.visibility = 'hidden'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        
         this.$message.success('导出成功')
       } catch (error) {
         console.error('Export error:', error)
@@ -676,12 +709,39 @@ export default {
   gap: 8px;
 }
 
+/* 下拉框样式 */
+.dark-theme .el-select-dropdown {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
+}
+
+.dark-theme :deep(.el-popper) {
+  z-index: 9999 !important;
+}
+
 /* 弹窗样式 */
 .custom-dialog {
   border-radius: 16px;
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* 确保下拉框层级高于弹窗 */
+.dark-theme .el-select-dropdown {
+  z-index: 9999 !important;
+}
+
+.dark-theme .el-date-picker {
+  z-index: 9999 !important;
+}
+
+.dark-theme .el-dropdown-menu {
+  z-index: 9999 !important;
 }
 
 .custom-dialog .el-dialog__header {

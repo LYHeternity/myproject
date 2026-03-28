@@ -67,13 +67,23 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     @Override
     public void updateLikeCount(Long postId) {
         // 实际实现中，应该根据like表的统计结果更新
-        // 这里简化处理
+        // 这里简化处理，假设每次调用增加1个点赞
+        Post post = baseMapper.selectById(postId);
+        if (post != null) {
+            post.setLikeCount(post.getLikeCount() + 1);
+            baseMapper.updateById(post);
+        }
     }
 
     @Override
     public void updateCommentCount(Long postId) {
         // 实际实现中，应该根据comment表的统计结果更新
-        // 这里简化处理
+        // 这里简化处理，假设每次调用增加1个评论
+        Post post = baseMapper.selectById(postId);
+        if (post != null) {
+            post.setCommentCount(post.getCommentCount() + 1);
+            baseMapper.updateById(post);
+        }
     }
 
     @Override

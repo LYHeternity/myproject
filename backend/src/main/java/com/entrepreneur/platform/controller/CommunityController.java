@@ -131,11 +131,11 @@ public class CommunityController {
             boolean isAdmin = isAdmin();
             System.out.println("是否管理员: " + isAdmin);
             System.out.println("帖子作者ID: " + existingPost.getUserId() + ", 当前用户ID: " + userId);
-            // 为了测试，暂时注释权限检查
-            // if (!existingPost.getUserId().equals(userId) && !isAdmin) {
-            //     System.out.println("无权修改");
-            //     return Result.fail("无权修改");
-            // }
+            // 检查权限
+            if (!existingPost.getUserId().equals(userId) && !isAdmin) {
+                System.out.println("无权修改");
+                return Result.fail("无权修改");
+            }
             post.setId(id);
             post.setUserId(existingPost.getUserId()); // 保持原作者ID
             postService.updateById(post);
@@ -171,11 +171,11 @@ public class CommunityController {
             boolean isAdmin = isAdmin();
             System.out.println("是否管理员: " + isAdmin);
             System.out.println("帖子作者ID: " + post.getUserId() + ", 当前用户ID: " + userId);
-            // 为了测试，暂时注释权限检查
-            // if (!post.getUserId().equals(userId) && !isAdmin) {
-            //     System.out.println("无权删除");
-            //     return Result.fail("无权删除");
-            // }
+            // 检查权限
+            if (!post.getUserId().equals(userId) && !isAdmin) {
+                System.out.println("无权删除");
+                return Result.fail("无权删除");
+            }
             postService.removeById(id);
             System.out.println("删除帖子成功");
             return Result.ok("删除成功");

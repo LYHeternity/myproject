@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page dark-theme">
     <div class="page-header-section">
       <div class="page-header-content">
         <h1 class="page-title">内容审核</h1>
@@ -294,6 +294,8 @@
       :visible.sync="showAuditDialog" 
       width="800px"
       class="custom-dialog"
+      :modal="false"
+      :z-index="1000"
     >
       <div v-if="activeTab === 'project'" class="audit-detail">
         <el-descriptions :column="1" border class="detail-descriptions">
@@ -326,6 +328,8 @@
       :visible.sync="showRejectDialog" 
       width="600px"
       class="custom-dialog"
+      :modal="false"
+      :z-index="1001"
     >
       <div class="reject-form">
         <el-form :model="rejectForm" label-width="80px">
@@ -1192,34 +1196,129 @@ export default {
   gap: 8px;
 }
 
+/* 下拉框样式 */
+.dark-theme .el-select-dropdown {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
+}
+
+.dark-theme :deep(.el-popper) {
+  z-index: 9999 !important;
+}
+
 /* 弹窗样式 */
 .custom-dialog {
-  border-radius: 16px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+}
+
+/* 确保下拉框层级高于弹窗 */
+.dark-theme .el-select-dropdown {
+  z-index: 9999 !important;
+}
+
+.dark-theme .el-date-picker {
+  z-index: 9999 !important;
+}
+
+.dark-theme .el-dropdown-menu {
+  z-index: 9999 !important;
 }
 
 .custom-dialog .el-dialog__header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 24px !important;
+  background: #334155 !important;
 }
 
 .custom-dialog .el-dialog__title {
-  color: #f8fafc;
-  font-size: 18px;
-  font-weight: 600;
+  color: #f8fafc !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
 }
 
 .custom-dialog .el-dialog__body {
-  padding: 24px;
-  color: #f8fafc;
+  padding: 24px !important;
+  color: #f8fafc !important;
+  background: #1e293b !important;
 }
 
 .custom-dialog .el-dialog__footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 20px 24px;
-  background: rgba(15, 23, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 20px 24px !important;
+  background: #334155 !important;
+}
+
+/* 确保弹窗内的表单元素使用深色主题 */
+.custom-dialog .el-input__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.custom-dialog .el-select .el-input__inner {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.custom-dialog .el-select-dropdown {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  z-index: 10000 !important;
+}
+
+.custom-dialog .el-select-dropdown__item {
+  color: #f8fafc !important;
+  padding: 12px 16px !important;
+}
+
+.custom-dialog .el-select-dropdown__item:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+.custom-dialog .el-select-dropdown__item.selected {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #3b82f6 !important;
+}
+
+/* 确保弹窗内的按钮使用深色主题 */
+.custom-dialog .el-button {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-size: 14px !important;
+}
+
+.custom-dialog .el-button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border: none !important;
+}
+
+.custom-dialog .el-button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+.custom-dialog .el-button {
+  background: #475569 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+.custom-dialog .el-button:hover {
+  background: #64748b !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* 审核详情样式 */

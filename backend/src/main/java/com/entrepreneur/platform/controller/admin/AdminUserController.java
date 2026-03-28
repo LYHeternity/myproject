@@ -92,4 +92,45 @@ public class AdminUserController {
     public Result<List<User>> getUsersByRole(@PathVariable String roleCode) {
         return Result.ok(userService.getUsersByRole(roleCode));
     }
+    
+    /**
+     * 批量设置用户状态
+     */
+    @PutMapping("/batch-status")
+    public Result<String> batchSetStatus(@RequestBody Map<String, Object> body) {
+        List<Long> ids = (List<Long>) body.get("ids");
+        Integer status = (Integer) body.get("status");
+        for (Long id : ids) {
+            userService.setStatus(id, status);
+        }
+        return Result.ok();
+    }
+    
+    /**
+     * 批量重置密码
+     */
+    @PutMapping("/batch-reset-password")
+    public Result<String> batchResetPassword(@RequestBody Map<String, Object> body) {
+        List<Long> ids = (List<Long>) body.get("ids");
+        String password = (String) body.get("password");
+        for (Long id : ids) {
+            userService.resetPassword(id, password);
+        }
+        return Result.ok();
+    }
+    
+    /**
+     * 批量删除用户
+     */
+    @DeleteMapping("/batch-delete")
+    public Result<String> batchDelete(@RequestBody Map<String, Object> body) {
+        List<Long> ids = (List<Long>) body.get("ids");
+        for (Long id : ids) {
+            User user = new User();
+            user.setId(id);
+            user.setDeleted(1);
+            userService.updateById(user);
+        }
+        return Result.ok();
+    }
 }
